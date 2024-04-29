@@ -43,3 +43,13 @@ async def query_assistant(query: str):
     except Exception as e:
         logger.error(f"Error processing query: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+import uvicorn
+import os
+
+if __name__ == "__main__":
+    
+    PORT = int(os.environ.get("PORT", 3000))
+    print(f"Server is running on port {PORT}")
+    uvicorn.run("main:app", host="0.0.0.0", port=PORT)
