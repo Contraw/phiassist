@@ -3,3 +3,4 @@ phidata
 pydantic
 requests
 uvicorn
+groq
