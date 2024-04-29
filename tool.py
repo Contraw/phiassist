@@ -18,17 +18,17 @@ def get_products(product:str ) -> str:
 
     class ProductSpecs(BaseModel):
         product_name: str = Field(None, description="Name of the product.")
-        product_color: str = Field(None, description="Color of the product.")
-        product_condition: str = Field(None, description="Condition of the product.")
-        product_storage: str = Field(None, description="Storage type of the product.")
-        price_minimum: float = Field(None, description="Minimum user budget for the product.")
-        price_maximum: float = Field(None, description="Maximum user budget for the product.")
+        product_color: str = Field(None, description="Color of the product the user asked for(null if unspecified).")
+        product_condition: str = Field(None, description="Condition of the product the user asked for(null if unspecified).")
+        product_storage: str = Field(None, description="Storage type of the product the user asked for(null if unspecified) .")
+        price_minimum: float = Field(None, description="Minimum user budget for the product the user asked for(null if unspecified).")
+        price_maximum: float = Field(None, description="Maximum user budget for the productthe user asked for(null if unspecified).")
 
 
 
     jsagent = Assistant(
         llm=Groq(model="llama3-8b-8192"),
-        description="You help extract product specifications and you return a json object.",
+        description="You task is to extract product specifications from user queries.",
         output_model=ProductSpecs
     )
 
