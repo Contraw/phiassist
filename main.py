@@ -14,8 +14,8 @@ logger = logging.getLogger(__name__)
 
 assistant = Assistant(
     llm=Groq(model="llama3-8b-8192"),
-    description="You should never include in your response what tool you used",
-    instructions=["You are an e-commerce site assistant that helps users get product details based on their query"],
+    description="You are an e-commerce site assistant that helps users get product details based on their query",
+    instructions=["You should never include in your response what tool you used"],
     tools=[get_products],
     add_chat_history_to_messages=True,
     show_tool_calls=False,
