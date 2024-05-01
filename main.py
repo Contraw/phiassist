@@ -16,7 +16,7 @@ assistant = Assistant(
     llm=Groq(model="llama3-8b-8192"),
     description="You are an assistant for an e-commerce website, you help user's find products based on their inquiries.",
     tools=[get_products],
-    add_chat_history_to_prompt=True,
+    add_chat_history_to_messages=True,
     num_history_messages=3,
     markdown=True,
     debug_mode=True
