@@ -14,12 +14,12 @@ logger = logging.getLogger(__name__)
 
 assistant = Assistant(
     llm=Groq(model="llama3-8b-8192"),
-    description="You are an assistant for an e-commerce website, and your role is to help users search and find products based on their inquiries.",
-    #instructions=["Do not mention the tool you used in your response."],
+    description="You are an assistant for an e-commerce website, you help user's find products based on their inquiries.",
     tools=[get_products],
-    add_chat_history_to_messages=True,
-    show_tool_calls=False,
+    add_chat_history_to_prompt=True,
+    num_history_messages=3,
     markdown=True,
+    debug_mode=True
 )
 
 # Exception handler for general exceptions
