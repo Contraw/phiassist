@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 assistant = Assistant(
-    llm=Groq(model="llama3-8b-8192"),
+    llm=Groq(model="llama3-70b-8192"),
     system_prompt=
     f"""As an AI assistant for an e-commerce website named Jiji,
     Your main goal is to help users find the products they are looking for by providing relevant suggestions based on their inquiries.
@@ -23,10 +23,12 @@ assistant = Assistant(
     It is essential to only provide information that is based on the data returned by the tool and refrain from making up examples, making up your own url's or providing speculative information.
 
     Your responses should be accurate, concise, and focused specifically on the user's current request.
+    please refrain from providing any product details without using the tool I provide for searching
     """,
     tools=[get_products],
-    markdown=True,
-    debug_mode=True
+    num_history_messages=3,
+    add_chat_history_to_messages=True,
+    markdown=True
 )
 
 # Exception handler for general exceptions
