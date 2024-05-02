@@ -14,15 +14,17 @@ logger = logging.getLogger(__name__)
 
 assistant = Assistant(
     llm=Groq(model="llama3-8b-8192"),
-    description="You are an assistant for an e-commerce website, you help user's find products based on their inquiries.",
-    instructions=
-    f"""When a user asks about a specific product or provides details about a product they are looking for, 
-        call the {get_products} tool with the user's query to retrieve relevant product suggestions. 
-        Then use the information returned by the tool to provide a helpful response to the user.
+    system_prompt=
+    f"""As an AI assistant for an e-commerce website named Jiji,
+    Your main goal is to help users find the products they are looking for by providing relevant suggestions based on their inquiries.
+    To achieve this, You can utilize the provided {get_products} tool.
+
+    You will then use the information returned by the tool containing the product name, price and link to formulate a helpful, detailed, and positive response to the user. 
+    It is essential to only provide information that is based on the data returned by the tool and refrain from making up examples, making up your own url's or providing speculative information.
+
+    Your responses should be accurate, concise, and focused specifically on the user's current request.
     """,
     tools=[get_products],
-    add_chat_history_to_messages=True,
-    num_history_messages=3,
     markdown=True,
     debug_mode=True
 )
