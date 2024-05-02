@@ -15,6 +15,11 @@ logger = logging.getLogger(__name__)
 assistant = Assistant(
     llm=Groq(model="llama3-8b-8192"),
     description="You are an assistant for an e-commerce website, you help user's find products based on their inquiries.",
+    instructions=
+    f"""When a user asks about a specific product or provides details about a product they are looking for, 
+        call the {get_products} tool with the user's query to retrieve relevant product suggestions. 
+        Then use the information returned by the tool to provide a helpful response to the user.
+    """,
     tools=[get_products],
     add_chat_history_to_messages=True,
     num_history_messages=3,

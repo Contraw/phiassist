@@ -6,13 +6,13 @@ from phi.assistant import Assistant
 from phi.llm.groq import Groq
 
 def get_products(product:str ) -> str:
-    """Call this tool to find products that the user has requested.
-
+    """Call this tool to search for products based on the user's query. 
+        The tool searches the product catalog and returns relevant products along with their URLs.
+        It can handle queries specifying product attributes like name, color, condition, storage type, and price range.
     Args:
-        product (str): User's query of the product.
-
+        product (str): User's query describing the desired product and its attributes.
     Returns:
-        str: A search result for the products and there Url.
+        str: A formatted string listing the matching products and their URLs.
     """ 
 
 
