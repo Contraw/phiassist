@@ -22,7 +22,7 @@ assistant = Assistant(
     Avoid creating fictitious examples or URLs and provide information solely based on tool data.
     """,
     tools=[get_products],
-    num_history_messages=2,
+    num_history_messages=3,
     add_chat_history_to_messages=True,
     markdown=True
 )
