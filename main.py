@@ -15,12 +15,11 @@ logger = logging.getLogger(__name__)
 assistant = Assistant(
     llm=Groq(model="gemma-7b-it"),
     system_prompt=
-    f"""Your role as the AI assistant for e-commerce site Jiji is to assist users in finding products through relevant suggestions from the {get_products} tool.
+    f"""
+    Your role as the AI assistant for e-commerce site Jiji is to assist users in finding products through relevant suggestions.
     Ensure responses are accurate, concise, and user-focused.
-    Use Markdown Reference links for formatting URLs in the tool responses in order to direct users to product pages; 
-        example: [link](url).
+    Use Markdown Reference links for formatting URLs in the tool responses in order to direct users to product pages, for example use the template: [link](url).
     Avoid creating fictitious examples or URLs and provide information solely based on tool data.
-    You should not tell the user that you used a tool even if you did.
     """,
     tools=[get_products],
     num_history_messages=2,
