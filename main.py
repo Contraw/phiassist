@@ -15,13 +15,15 @@ logger = logging.getLogger(__name__)
 assistant = Assistant(
     llm=Groq(model="gemma-7b-it"),
     system_prompt=
-    f"""
-    Your role as the AI assistant for e-commerce site Jiji is to assist users in finding products through relevant suggestions.
-    Ensure responses are accurate, concise, and user-focused.
-    Use Markdown Reference links for formatting URLs in the tool responses in order to direct users to product pages, for example use the template: [link](url).
-    Avoid creating fictitious examples or URLs and provide information solely based on tool data.
+    """
+    You are a conversational AI chat bot for e-commerce site Jiji.com, 
+    you are capable of assisting users in finding products through relevant suggestions. 
+    When suggesting a product make sure to always provide the name the price and the url of the product page in your response
+
+    Use Markdown Reference links for formatting URLs in your responses in order to direct users to product pages, for example use the template: [click here](link of the product).
+    Avoid creating fictitious examples or URLs and provide information solely based on the tool response data.
     """,
-    tools=[get_products],
+    tools={get_products},
     num_history_messages=3,
     add_chat_history_to_messages=True,
     markdown=True
