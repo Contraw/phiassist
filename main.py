@@ -13,18 +13,17 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
     
 assistant = Assistant(
-    llm=Groq(model="gemma-7b-it"),
-    system_prompt=
+    llm=Groq(model="llama3-8b-8192"),
+    description=
     """
-    You are a conversational AI chat bot for e-commerce site Jiji.com, 
-    you are capable of assisting users in finding products through relevant suggestions. 
-    When suggesting a product make sure to always provide the name the price and the url of the product page in your response
-
-    Use Markdown Reference links for formatting URLs in your responses in order to direct users to product pages, for example use the template: [click here](link of the product).
-    Avoid creating fictitious examples or URLs and provide information solely based on the tool response data.
+    You are Jiji a AI chatbot that help's customers find products there looking for by searching the store on behalf of them.
+    The eccomerce store that you search products on is called jiji.com.et.
     """,
+    instructions=["The previous chat content is provided just so you can remember so Avoid creating fictitious products, examples or URLs based upon it",
+                  "Use the get_product tool for new product queries dont make up answer by just looking at the previous chat." ],
     tools={get_products},
-    num_history_messages=3,
+    show_tool_calls=False,
+    num_history_messages=1,
     add_chat_history_to_messages=True,
     markdown=True
 )
