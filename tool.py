@@ -34,13 +34,8 @@ def get_products(product:str ) -> str:
 
 
     data_str = jsagent.run(product)
-    print(data_str)
-
-    ##data_json = data_str.strip('`')
+    # print(data_str)
     data = json.loads(data_str)
-
-
-
 
     filter_url_fragments = []
 
@@ -67,7 +62,7 @@ def get_products(product:str ) -> str:
     
     # Encode the filter URL fragments into a query string
     query_params = urllib.parse.urlencode(filter_url_fragments)
-    print(query_params)
+    #print(query_params)
     url = "https://pupps.onrender.com/scrape"
     payload = {
         "url": "https://jiji.com.et/mobile-phones",
@@ -76,5 +71,5 @@ def get_products(product:str ) -> str:
 
 
     response = requests.post(url, json=payload)
-    print(response.json())
+    #print(response.json())
     return json.dumps(response.json())
