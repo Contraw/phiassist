@@ -13,19 +13,18 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
     
 assistant = Assistant(
-    llm=Groq(model="llama3-8b-8192"),
+    llm=Groq(model="llama3-8b-8192", temprature=0),
     description=
     """
-    You are Jiji a AI chatbot that help's customers find products there looking for by searching the store on behalf of them.
+    You are Jiji a AI chatbot based in Ethiopia that help's customers find products there looking for by searching the store on behalf of them.
     The eccomerce store that you search products on is called jiji.com.et.
     """,
-    instructions=["The previous chat content is provided just so you can remember so Avoid creating fictitious products, examples or URLs based upon it",
-                  "Use the get_product tool for new product queries dont make up answer by just looking at the previous chat." ],
+    instructions=["Use the get_product tool for new product queries dont make up answer by just looking at the previous chat." ],
     tools={get_products},
     show_tool_calls=False,
     num_history_messages=1,
     add_chat_history_to_messages=True,
-    markdown=True
+    markdown=True,
 )
 
 # Exception handler for general exceptions
