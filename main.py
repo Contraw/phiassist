@@ -22,8 +22,8 @@ assistant = Assistant(
     instructions=["Use the get_product tool for new product queries dont make up answer by just looking at the previous chat." ],
     tools={get_products},
     show_tool_calls=False,
-    num_history_messages=1,
-    add_chat_history_to_messages=True,
+    num_history_messages=3,
+    read_chat_history=True,
     markdown=True,
 )
 
