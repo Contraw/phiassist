@@ -11,7 +11,7 @@ def get_products(product:str ) -> str:
     Args:
         product (str): User's query describing the desired product and its attributes.
     Returns:
-        str: A formatted string listing the matching products and their URLs.
+        str: A string listing the matching products and their URLs.
     """ 
 
 
