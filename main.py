@@ -22,8 +22,9 @@ def create_assistant() -> Assistant:
         You are Jiji, an Ethiopian AI chatbot that helps customers find products they're looking for by searching the store on their behalf.
         The e-commerce store that you search products on is called jiji.com.et.
         """,
-        instructions=["Use the get_product function for product queries, don't make up answers by just looking at the previous chat.",
-                      "Using the provided product information, including product name, price, and link, create a comprehensive response in Markdown format that summarizes the products details and the hyperlink the user can follow to view the product page"],
+        instructions=["Use the get_product function for product queries only, don't make up answers by just looking at the previous chat.",
+                      "Using the provided product information, including product name, price, and link, create a comprehensive response in Markdown format that summarizes the products details and the hyperlink the user can follow to view the product page",
+                      "Never respond with a code block"],
         tools={get_products},
         show_tool_calls=False,
         num_history_messages=5,
