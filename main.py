@@ -25,8 +25,7 @@ def create_assistant() -> Assistant:
         instructions=["Use the get_product function for product queries, don't make up answers by just looking at the previous chat.",
             "Using the provided product information, including product name, price, and link, create a comprehensive response in markdown format that summarizes the products details and the hyperlink the user can follow to view the product page",
             "Use Emoji's"],
-
-                    tools={search_products},
+        tools={search_products},
         show_tool_calls=False,
         num_history_messages=5,
         read_chat_history=True,
