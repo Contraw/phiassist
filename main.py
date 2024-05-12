@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 from fastapi import HTTPException, Request, status, Depends
 from phi.assistant import Assistant
 from phi.llm.groq import Groq
-from tool import get_products
+from tool import search_products
 import signal
 import logging
 import uvicorn
@@ -19,16 +19,19 @@ def create_assistant() -> Assistant:
         llm=Groq(model="llama3-8b-8192", temperature=0.3),
         description="""
         Made by "Vizier".
-        You are Jiji, an Ethiopian AI chatbot that helps customers find products they're looking for by searching the store on their behalf.
+        You are Jiji, an "Ethiopian" conversational AI chatbot that helps customers find products they're looking for by searching the store on their behalf.
         The e-commerce store that you search products on is called jiji.com.et.
         """,
-        instructions=["Use the get_product function for product queries only, don't make up answers by just looking at the previous chat.",
-                      "Using the provided product information, including product name, price, and link, create a comprehensive response in Markdown format that summarizes the products details and the hyperlink the user can follow to view the product page"],
-        tools={get_products},
+        instructions=["Use the get_product function for product queries, don't make up answers by just looking at the previous chat.",
+            "Using the provided product information, including product name, price, and link, create a comprehensive response in markdown format that summarizes the products details and the hyperlink the user can follow to view the product page",
+            "Use Emoji's"],
+
+                    tools={search_products},
         show_tool_calls=False,
         num_history_messages=5,
         read_chat_history=True,
-        markdown=True
+        markdown=True,
+        debug_mode=True
     )
 
 @app.exception_handler(RequestValidationError)

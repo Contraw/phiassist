@@ -5,11 +5,11 @@ from pydantic import BaseModel, Field
 from phi.assistant import Assistant
 from phi.llm.groq import Groq
 
-def get_products(product:str ) -> str:
-    """Utilize this function to search for products the user's queries for.
-    The function searches the product catalog and returns relevant products along with their URLs.
+def search_products(product:str ) -> str:
+    """Utilize this function to search the e-commerce store for products the user's queries.
+    This function searches the product catalog and returns relevant products along with their URLs.
     Args:
-        product (str): User's query describing the desired product and its attributes.
+        product (str): A string describing the desired product and its attributes.
     Returns:
         str: A string listing the matching products and their URLs.
     """ 
