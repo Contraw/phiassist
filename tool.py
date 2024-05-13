@@ -11,7 +11,7 @@ def search_products(product:str ) -> str:
     Args:
         product (str): A string describing the desired product and its attributes.
     Returns:
-        str: A string listing the matching products and their URLs.
+        str: A string listing the matching products.
     """ 
 
 
